@@ -11,9 +11,19 @@ class MoviesService {
     }
     getMovies = async () => {
 
-        const respone = await this.client.get("/movies");
-        return respone.data;
-    }
+        const response = await this.client.get("/movies");
+        return response.data;
+    };
+    getSingleMovie = async (movieId: number) => {
+        const response = await this.client.get(`movies/${movieId}`)
+        return response.data;
+    };
+
+    paginateMovies = async (take: number, skip: number) => {
+        
+        const response = await this.client.get(`https://vivifyacademy-movie-api.vivifyideas.com/api/movies?take=${take}&skip=${skip}`);
+        return response.data;
+    };
 };
 
 const movieService = new MoviesService(apiService);

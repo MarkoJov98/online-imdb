@@ -14,6 +14,9 @@ import HomeScreen from "./pages/Home";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ProfileScreen from "./pages/Profile";
 import Movies from "./pages/Movies";
+import Directors from "./pages/Directors";
+import SingleMoviePage from "./pages/SingleMovie";
+import SingleDirectorPage from "./pages/SingleDirector";
 
 function App() {
   return (
@@ -29,6 +32,9 @@ function App() {
 
           <Route path="*" element={<Navigate to="/" replace />} />
           <Route path="/movies" element={<Movies />} />
+          <Route path="/movies/:movieId" element={<SingleMoviePage />} />
+          <Route path="/directors" element={<Directors />}/>
+          <Route path="/directors/:directorId" element={<SingleDirectorPage />}/>
         </Routes>
       </main>
     </Router>

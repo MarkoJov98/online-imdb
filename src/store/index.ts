@@ -4,6 +4,7 @@ import createSagaMiddleware from "redux-saga";
 import sagas from "./sagas";
 import authReducer from "./auth/slice";
 import moviesReducer from "./movies/slice"
+import directorsReducer from "./directors/slice"
 
 
 const sagaMiddleware = createSagaMiddleware();
@@ -12,6 +13,7 @@ export default configureStore({
   reducer: {
     auth: authReducer,
     movies: moviesReducer,
+    directors: directorsReducer,
    
   },
   middleware: (getDefaultMiddleware) => [

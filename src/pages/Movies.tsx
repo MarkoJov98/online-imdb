@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { performFetchMovies, setMoviesList } from "../store/movies/slice";
-import { selectMovies } from "../store/movies/selectors";
+import { performFetchMovies } from "../store/movies/slice";
+import { selectMovies  } from "../store/movies/selectors";
 import { Link } from "react-router-dom";
+import "../styles/movies.css"
 
 const Movies = () => {
   const dispatch = useDispatch();
@@ -15,10 +16,10 @@ const Movies = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className="movies">
       <h2>Stranica filmova</h2>
       {movieList.length > 0 ? (
-        <ul>
+        <ul className="movies-wrapper">
           {movieList.map((movie) => (
             <li key={movie.id}>
               <Link to={`/movies/${movie.id}`}>

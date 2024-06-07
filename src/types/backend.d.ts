@@ -16,6 +16,7 @@ interface Director {
   date_of_birth: string;
   image: string;
   creator_id: number;
+  movies: Movie[];
 }
 
 interface Movie {
@@ -28,6 +29,24 @@ interface Movie {
   creator_id: number;
 }
 
-interface MovieList {
-  data: Movie[];
+interface Person {
+  id: number;
+  name: string;
+  surname?: string;
+}
+
+interface SingleMovie {
+  id: number;
+  title: string;
+  release_date: string;
+  user_score: number;
+  description: string;
+  image: string;
+  trailer: string;
+  duration: string;
+  creator_id: number;
+  director_id: number;
+  genres: Genre[];
+  creator: Person;
+  director: Person;
 }

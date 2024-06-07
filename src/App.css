@@ -30,7 +30,7 @@ html {
   /* border: 1px solid black; */
   height: 80vh;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 .content h1,

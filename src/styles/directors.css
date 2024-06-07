@@ -1,0 +1,34 @@
+img {
+    max-height: 400px;
+}
+.directors-wrapper {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+}
+.directors-wrapper li {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 20px;
+}
+.directors-wrapper a {
+    margin: 30px;
+    text-decoration: none;
+    color: black;
+}
+h2 {
+    text-align: center;
+}
+.directors {
+    width: 100%;
+}
+.directors-wrapper li:hover {
+    background-color: #f0f0f0;
+    box-shadow: 0px 10px 20px 5px rgba(0,0,0,0.2);
+  }
+  
+.directors-wrapper p {
+    margin: 0;
+  }
