@@ -16,8 +16,16 @@ class DirectorsService {
     getSingleDirector = async (directorId: number) => {
         const response = await this.client.get(`directors/${directorId}`);
         return response.data;
-    }
-}
+    };
+    createDirector = async (directorData: any) => {
+        const response = await this.client.post("/directors", directorData);
+        return response.data;
+    };
+    deleteDirector = async (directorId: number) => {
+        const response = await this.client.delete(`/directors/${directorId}`);
+        return response.data;
+    };
+};
 
 
 const directorsService = new DirectorsService(apiService);

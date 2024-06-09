@@ -17,6 +17,8 @@ import Movies from "./pages/Movies";
 import Directors from "./pages/Directors";
 import SingleMoviePage from "./pages/SingleMovie";
 import SingleDirectorPage from "./pages/SingleDirector";
+import CreateMovie from "./pages/CreateMovie";
+import CreateDirector from "./pages/CreateDirector";
 
 function App() {
   return (
@@ -33,8 +35,10 @@ function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
           <Route path="/movies" element={<Movies />} />
           <Route path="/movies/:movieId" element={<SingleMoviePage />} />
+          <Route path="/movies/create" element={<CreateMovie /> } />
           <Route path="/directors" element={<Directors />}/>
           <Route path="/directors/:directorId" element={<SingleDirectorPage />}/>
+          <Route path="/directors/create" element={<CreateDirector />}/>
         </Routes>
       </main>
     </Router>

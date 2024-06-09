@@ -5,19 +5,22 @@ import { selectMovies  } from "../store/movies/selectors";
 import { Link } from "react-router-dom";
 import "../styles/movies.css"
 
+
 const Movies = () => {
   const dispatch = useDispatch();
   const movieList = useSelector(selectMovies);
 
-  console.log(movieList);
+  // console.log(movieList);
 
   useEffect(() => {
     dispatch(performFetchMovies());
   }, [dispatch]);
 
   return (
+    <>
     <div className="movies">
       <h2>Stranica filmova</h2>
+      <Link to="/movies/create">Kreiraj novi film</Link>
       {movieList.length > 0 ? (
         <ul className="movies-wrapper">
           {movieList.map((movie) => (
@@ -31,8 +34,9 @@ const Movies = () => {
         </ul>
       ) : (
         <p>Trenutno nema dostupnih filmova</p>
-      )}
+        )}
     </div>
+    </>
   );
 };
 

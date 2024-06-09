@@ -19,6 +19,7 @@ const Directors = () => {
     return (
         <div className="directors">
             <h2>Reziseri</h2>
+            <Link to="/directors/create">Kreiraj direktora</Link>
             {directorsList.length > 0 ? (
                 <ul className="directors-wrapper">
                     {directorsList.map((director: Director) => (

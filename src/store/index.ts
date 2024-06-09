@@ -5,6 +5,7 @@ import sagas from "./sagas";
 import authReducer from "./auth/slice";
 import moviesReducer from "./movies/slice"
 import directorsReducer from "./directors/slice"
+import commentsReducer from "./comments/slice"
 
 
 const sagaMiddleware = createSagaMiddleware();
@@ -14,6 +15,7 @@ export default configureStore({
     auth: authReducer,
     movies: moviesReducer,
     directors: directorsReducer,
+    comments: commentsReducer,
    
   },
   middleware: (getDefaultMiddleware) => [

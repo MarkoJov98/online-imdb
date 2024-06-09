@@ -18,6 +18,18 @@ class MoviesService {
         const response = await this.client.get(`movies/${movieId}`)
         return response.data;
     };
+    createMovie = async (movieData: any) => {
+        const response = await this.client.post("/movies", movieData);
+        return response.data;
+    };
+    getGenres = async () => {
+        const response = await this.client.get("/genres");
+        return response.data;
+    };
+    deleteMovie = async (movieId: number) => {
+        const response = await this.client.delete(`movies/${movieId}`);
+        return response.data;
+    };
 
     paginateMovies = async (take: number, skip: number) => {
         
