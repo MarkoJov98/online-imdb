@@ -20,7 +20,7 @@ const Directors = () => {
         <div className="directors">
             <h2>Reziseri</h2>
             <Link to="/directors/create">Kreiraj direktora</Link>
-            {directorsList.length > 0 ? (
+            {directorsList && directorsList.length > 0 ? (
                 <ul className="directors-wrapper">
                     {directorsList.map((director: Director) => (
                         <li key={director.id}>

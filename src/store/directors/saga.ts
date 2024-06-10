@@ -31,6 +31,7 @@ function* createDirector (action: {payload: any}): SagaIterator {
         console.log(response);
         
         yield put(setDirectorsList(response));
+        yield put(performFetchDirectors())
     } catch(error) {
         console.log(error);
     };
@@ -39,7 +40,7 @@ function* deleteDirector (action: {payload: number}): SagaIterator {
     try {
         const response = yield call(directorsService.deleteDirector, action.payload);
         console.log(response);
-        yield put(performFetchDirectors)
+        yield put(performFetchDirectors())
     } catch (error) {
         console.log(error);
     };

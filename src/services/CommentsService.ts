@@ -16,7 +16,11 @@ class CommentsService {
     postComment = async (postData: any) => {
         const response = await this.client.post("comments", postData);
         return response.data;
-    }
+    };
+    deleteComment = async (commentId: number) => {
+        const response = await this.client.delete(`/comments/${commentId}`);
+        return response.data;
+    };
 }
 
 const commentsService = new CommentsService(apiService);

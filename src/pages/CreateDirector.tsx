@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { performCreateDirector } from "../store/directors/slice";
 import "../styles/form.css";
+import { useNavigate } from "react-router-dom";
 
 
 const CreateDirector = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [ directorForm, setDirectorForm ] = useState<DirectorData>({
         name: "",
         surname: "",
@@ -23,6 +25,7 @@ const CreateDirector = () => {
         console.log(directorForm);
         
         dispatch(performCreateDirector(directorForm));
+        navigate("/directors")
     };
 
     return (

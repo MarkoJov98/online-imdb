@@ -32,7 +32,7 @@ class AuthService {
 
   getUserProfile = async () => {
     const response = await this.client.get("/auth/me");
-    console.log({ response });
+    // console.log({ response });
 
     return response.data;
   };

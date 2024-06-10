@@ -10,7 +10,7 @@ const ProfileScreen = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(performGetUserProfile());
+    dispatch(performGetUserProfile(userData));
     // eslint-disable-next-line
   }, []);
 

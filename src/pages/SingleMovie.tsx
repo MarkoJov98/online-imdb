@@ -7,6 +7,8 @@ import "../styles/singleDirector.css";
 import { selectComments } from "../store/comments/selectors";
 import { performFetchComments } from "../store/comments/slice";
 import Comments from "../components/Comments";
+import { selectAuthUser } from "../store/auth/selectors";
+import { performGetUserProfile } from "../store/auth/slice";
 
 
 const SingleMoviePage = () => {
@@ -14,12 +16,18 @@ const SingleMoviePage = () => {
     const dispatch = useDispatch();
     const movie = useSelector(selectSingleMovie);
     const comments = useSelector(selectComments);
+    const userData = useSelector(selectAuthUser);
     const navigate = useNavigate();
 
     useEffect(() => {
         dispatch(performFetchSingleMovie(Number(movieId)))
         dispatch(performFetchComments(Number(movieId)))
-    }, [dispatch, movieId]);
+        if(userData) {
+            dispatch(performGetUserProfile(userData))
+            // console.log(userData)
+        }
+    }, [dispatch, movieId,]);
+    const isCurrentUserCreator = Number(userData.id) === movie.creator_id;
 
     const handleDelete = () => {
         const confirmDelete = window.confirm("Da li ste sigurni da zelite da obrisete film?");
@@ -43,10 +51,11 @@ const SingleMoviePage = () => {
             ))}</p>
             <img src={movie?.image} alt="movie" />
             <p>Opis flma: {movie?.description}</p>
-            <button onClick={handleDelete}>Obrisi film</button>
-
-            <Comments comments={comments} movie_id={Number(movieId)} />
-            </div>
+            {isCurrentUserCreator && (
+                <button onClick={handleDelete}>Obrisi film</button>
+            )}
+            <Comments comments={comments} movie_id={Number(movieId) } userId={Number(userData.id)}/>
+        </div>
     );
 }
 

@@ -5,7 +5,7 @@ const middlewareActions = {
     performPaginateMovies: (_state: any, action: PayloadAction<any>) => {},
     performFetchSingleMovie: (_state: any, action: PayloadAction<number>) => {},
     performFetchGenres: () => {},
-    performCreateMovie: (_state: any, action: PayloadAction<any>) => {},
+    performCreateMovie: (_state: any, action: PayloadAction<MovieData>) => {},
     performDeleteMovie: (_state: any, action: PayloadAction<number>) => {},
 
 }

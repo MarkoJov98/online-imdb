@@ -7,7 +7,7 @@ const userToken = localStorage.getItem("userToken")
 const middlewareActions = {
   performUserLogin: (_state: any, action: PayloadAction<Partial<User>>) => {},
   performRegisterUser: (_state: any, action: PayloadAction<User>) => {},
-  performGetUserProfile: () => {},
+  performGetUserProfile: (_state: any, action: PayloadAction<any>) => {},
 };
 
 

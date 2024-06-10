@@ -3,7 +3,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 const middlewareActions = {
     performFetchDirectors: () => {},
     performFetchSingleDirector: (_state: any, action: PayloadAction<number>) => {},
-    performCreateDirector: (_state: any, action: PayloadAction<any>) => {},
+    performCreateDirector: (_state: any, action: PayloadAction<DirectorData>) => {},
     performDeleteDirector: (_state: any, action: PayloadAction<number>) => {},
 }
 export const directorsSlice = createSlice({
