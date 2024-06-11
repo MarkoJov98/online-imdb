@@ -1,7 +1,7 @@
 import { Saga, SagaIterator } from "redux-saga";
 import { call, takeLatest, put } from "redux-saga/effects";
 import directorsService from "../../services/DirectorsService";
-import { performCreateDirector, performDeleteDirector, performFetchDirectors, performFetchSingleDirector, setDirectorsList, setSingleDirector } from "./slice";
+import { performCreateDirector, performDeleteDirector, performFetchDirectors, performFetchSingleDirector, performPaginateDirectors, setDirectorsList, setPaginatedDirector, setSingleDirector } from "./slice";
 import { performFetchSingleMovie } from "../movies/slice";
 
 function* fetchDirectors(): SagaIterator {
@@ -46,6 +46,16 @@ function* deleteDirector (action: {payload: number}): SagaIterator {
     };
 };
 
+function* fetchPaginatedDirectors (action: { payload: any}): SagaIterator {
+    try {
+        const { take, skip } = action.payload;
+        const response = yield call(directorsService.paginateDirectors, take, skip);
+        yield put(setPaginatedDirector(response));
+        yield put(performFetchDirectors());
+    } catch (error) {
+        console.log(error);
+    }
+};
 export function* watchFetchDirectors(): SagaIterator {
     yield takeLatest(performFetchDirectors, fetchDirectors);
 };
@@ -60,4 +70,8 @@ export function* watchCreateDirector(): SagaIterator {
 
 export function* watchDeleteDirector(): SagaIterator {
     yield takeLatest(performDeleteDirector, deleteDirector);
+};
+
+export function* watchPaginateDirectors(): SagaIterator {
+    yield takeLatest(performPaginateDirectors, fetchPaginatedDirectors);
 };

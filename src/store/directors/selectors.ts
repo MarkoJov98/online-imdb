@@ -2,4 +2,6 @@ const selectDirectors = (state: {directors: { directorsList: {data: Director[]}}
 
 const selectSingleDirector = (state: {directors: {singleDirector: Director}}) => state.directors.singleDirector;
 
-export { selectDirectors , selectSingleDirector}
+const selecetPaginatedDirectors =(state: {directors: {paginatedDirectors: {data: Director[], metadata: any}}}) => state.directors.paginatedDirectors;
+
+export { selectDirectors , selectSingleDirector, selecetPaginatedDirectors};

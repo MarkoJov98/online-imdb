@@ -5,12 +5,14 @@ const middlewareActions = {
     performFetchSingleDirector: (_state: any, action: PayloadAction<number>) => {},
     performCreateDirector: (_state: any, action: PayloadAction<DirectorData>) => {},
     performDeleteDirector: (_state: any, action: PayloadAction<number>) => {},
+    performPaginateDirectors: (_state: any, action: PayloadAction<any>) => {},
 }
 export const directorsSlice = createSlice({
     name: "directors",
     initialState: {
         directorsList: {data: []},
         singleDirector: [],
+        paginatedDirectors: {data: [], metadata: {}}
     },
     reducers: {
         setDirectorsList: (state, action) => {
@@ -25,10 +27,13 @@ export const directorsSlice = createSlice({
         deleteDirector: (state, action) => {
             state.directorsList = action.payload;
         },
+        setPaginatedDirector: (state, action) => {
+            state.paginatedDirectors = action.payload;
+        },
         ...middlewareActions
     },
 })
 
-export const { setDirectorsList, performFetchDirectors , setSingleDirector, createDirector, performFetchSingleDirector, performCreateDirector, deleteDirector , performDeleteDirector} = directorsSlice.actions;
+export const { setDirectorsList, performFetchDirectors , setSingleDirector, createDirector, performFetchSingleDirector, performCreateDirector, deleteDirector , performDeleteDirector, setPaginatedDirector, performPaginateDirectors} = directorsSlice.actions;
 
 export default directorsSlice.reducer;

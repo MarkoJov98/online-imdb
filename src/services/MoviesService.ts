@@ -37,7 +37,7 @@ class MoviesService {
 
     paginateMovies = async (take: number, skip: number) => {
         
-        const response = await this.client.get(`https://vivifyacademy-movie-api.vivifyideas.com/api/movies?take=${take}&skip=${skip}`);
+        const response = await this.client.get(`/movies?take=${take}&skip=${skip}`);
         return response.data;
     };
 };
