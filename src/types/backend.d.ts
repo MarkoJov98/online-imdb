@@ -90,3 +90,7 @@ interface PostData {
   body: string,
   movie_id: number
 }
+interface EditMovie {
+  movieId: number,
+  movieData: MovieData
+}

@@ -6,6 +6,7 @@ import {
   performRegisterUser,
   performGetUserProfile,
   setUser,
+  performLogoutUser,
 } from "./slice";
 import authService from "../../services/AuthService";
 
@@ -17,7 +18,15 @@ function* userLogin(action: { payload: any }): SagaIterator {
   } catch (error) {
     console.log(error);
   }
-}
+};
+
+function* userLogout(): SagaIterator {
+  try {
+    const response= yield call(authService.logout);
+  } catch (error) {
+    console.log(error);
+  };
+};
 
 function* getUserProfile(): SagaIterator {
   try {
@@ -52,3 +61,7 @@ export function* watchGetUserProfile(): SagaIterator {
     getUserProfile as () => SagaIterator
   );
 }
+
+export function* watchLogoutUser(): SagaIterator {
+  yield takeLatest(performLogoutUser.type, userLogout as () => SagaIterator)
+};

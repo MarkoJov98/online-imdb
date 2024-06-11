@@ -1,7 +1,7 @@
 const HomeScreen = () => {
   return (
     <div>
-      <h1>Home screen</h1>
+      <h1>Dobrodosli na moj IMDB PROJEKAT</h1>
     </div>
   );
 };

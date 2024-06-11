@@ -19,10 +19,13 @@ import SingleMoviePage from "./pages/SingleMovie";
 import SingleDirectorPage from "./pages/SingleDirector";
 import CreateMovie from "./pages/CreateMovie";
 import CreateDirector from "./pages/CreateDirector";
+import Navbar from "./components/NavBar";
+import EditMoviePage from "./pages/EditMovies";
 
 function App() {
   return (
     <Router>
+      <Navbar />
       <main className="container content">
         <Routes>
           <Route path="/login" element={<Login />} />
@@ -33,12 +36,27 @@ function App() {
           <Route path="/" element={<HomeScreen />} />
 
           <Route path="*" element={<Navigate to="/" replace />} />
-          <Route path="/movies" element={<Movies />} />
-          <Route path="/movies/:movieId" element={<SingleMoviePage />} />
-          <Route path="/movies/create" element={<CreateMovie /> } />
-          <Route path="/directors" element={<Directors />}/>
-          <Route path="/directors/:directorId" element={<SingleDirectorPage />}/>
-          <Route path="/directors/create" element={<CreateDirector />}/>
+          <Route element={<ProtectedRoute />}>
+            <Route path="/movies" element={<Movies />} />
+          </Route>
+          <Route element={<ProtectedRoute />}>
+            <Route path="/movies/:movieId" element={<SingleMoviePage />} />
+          </Route>
+          <Route element={<ProtectedRoute />}>
+            <Route path="/movies/create" element={<CreateMovie />} />
+          </Route>
+          <Route path="/edit-movie/:movieId" element={<EditMoviePage />}/>
+
+          <Route element={<ProtectedRoute />}>
+            <Route path="/directors" element={<Directors />} />
+          </Route>
+          <Route element={<ProtectedRoute />}>
+            <Route path="/directors/:directorId" element={<SingleDirectorPage />}
+            />
+          </Route>
+          <Route element={<ProtectedRoute />}>
+            <Route path="/directors/create" element={<CreateDirector />} />
+          </Route>
         </Routes>
       </main>
     </Router>

@@ -7,6 +7,7 @@ const middlewareActions = {
     performFetchGenres: () => {},
     performCreateMovie: (_state: any, action: PayloadAction<MovieData>) => {},
     performDeleteMovie: (_state: any, action: PayloadAction<number>) => {},
+    performEditMovie: (_state: any, action: PayloadAction<{movieId: number, movieData: MovieData}>) => {}
 
 }
 
@@ -43,6 +44,6 @@ export const moviesSlice = createSlice({
 });
 
 
-export const { setMoviesList , performFetchMovies, setPaginateMovies, performPaginateMovies, setMovie, performFetchSingleMovie, setGenres, performFetchGenres, performCreateMovie, createMovie, deleteMovie, performDeleteMovie } = moviesSlice.actions;
+export const { setMoviesList , performFetchMovies, setPaginateMovies, performPaginateMovies, setMovie, performFetchSingleMovie, setGenres, performFetchGenres, performCreateMovie, createMovie, deleteMovie, performDeleteMovie, performEditMovie } = moviesSlice.actions;
 
 export default moviesSlice.reducer;

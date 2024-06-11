@@ -54,6 +54,11 @@ const SingleMoviePage = () => {
             {isCurrentUserCreator && (
                 <button onClick={handleDelete}>Obrisi film</button>
             )}
+            {isCurrentUserCreator && (
+                 <Link to={`/edit-movie/${movie.id}`}>
+                 <button>Uredi film</button>
+                 </Link>
+            )}
             <Comments comments={comments} movie_id={Number(movieId) } userId={Number(userData.id)}/>
         </div>
     );

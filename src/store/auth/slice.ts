@@ -8,6 +8,7 @@ const middlewareActions = {
   performUserLogin: (_state: any, action: PayloadAction<Partial<User>>) => {},
   performRegisterUser: (_state: any, action: PayloadAction<User>) => {},
   performGetUserProfile: (_state: any, action: PayloadAction<any>) => {},
+  performLogoutUser: () => {},
 };
 
 
@@ -40,6 +41,7 @@ export const {
   performUserLogin,
   performRegisterUser,
   performGetUserProfile,
+  performLogoutUser,
 } = authSlice.actions;
 
 export default authSlice.reducer;

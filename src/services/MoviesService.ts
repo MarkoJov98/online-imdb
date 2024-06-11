@@ -30,6 +30,10 @@ class MoviesService {
         const response = await this.client.delete(`movies/${movieId}`);
         return response.data;
     };
+    editMovie = async (moviesId: number, movieData: MovieData) => {
+        const response = await this.client.put(`/movies/${moviesId}`, movieData);
+        return response.data;
+    };
 
     paginateMovies = async (take: number, skip: number) => {
         

@@ -2,7 +2,7 @@ import { Saga, SagaIterator } from "redux-saga";
 
 import movieService from "../../services/MoviesService";
 import { call, put, takeLatest } from "redux-saga/effects";
-import { performCreateMovie, performDeleteMovie, performFetchGenres, performFetchMovies, performFetchSingleMovie, performPaginateMovies, setGenres, setMovie, setMoviesList, setPaginateMovies } from "./slice";
+import { performCreateMovie, performDeleteMovie, performEditMovie, performFetchGenres, performFetchMovies, performFetchSingleMovie, performPaginateMovies, setGenres, setMovie, setMoviesList, setPaginateMovies } from "./slice";
 
 
 function* fetchMovies (): SagaIterator {
@@ -52,6 +52,16 @@ function* deleteMovie (action: {payload: number}) :SagaIterator {
     };
 };
 
+function* editMovie (action: {payload: {movieId: number, movieData: MovieData}}): SagaIterator {
+    try {
+        const { movieId, movieData } = action.payload
+        const response = yield call(movieService.editMovie, movieId, movieData)
+        yield put(performFetchMovies())
+    } catch (error) {
+        console.log(error);
+    };
+};
+
 
 
 function* fetchPaginatedMovies (action: { payload: any}): SagaIterator {
@@ -84,6 +94,10 @@ export function* watchCreateMovie() :SagaIterator {
 
 export function* watchDeleteMovie() : SagaIterator {
     yield takeLatest(performDeleteMovie, deleteMovie)
+};
+
+export function* watchEditMovies(): SagaIterator {
+    yield takeLatest(performEditMovie, editMovie);
 };
 
 export function* watchPaginateMovies (): SagaIterator {

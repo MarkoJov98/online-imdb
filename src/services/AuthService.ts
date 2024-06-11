@@ -18,6 +18,11 @@ class AuthService {
 
     return response.data;
   };
+  logout = async () => {
+    const response = await this.client.post("/auth/signout")
+    localStorage.removeItem("userToken");
+    return response.data;
+  };
 
   register = async (payload: any) => {
     console.log({ payload });
